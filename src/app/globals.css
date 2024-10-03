@@ -1,27 +1,57 @@
+/* src/styles/globals.css */
+
+/* Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+/* Hide Google Translate attribution and bar */
+.goog-logo-link, 
+.goog-te-gadget span, 
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt, 
+.goog-te-menu-value span,
+.skiptranslate,
+.goog-te-spinner-pos {
+  display: none !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.goog-te-gadget {
+  font-size: 0px !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  top: 0 !important;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Prevent translation popups on hover */
+.goog-tooltip {
+  display: none !important;
+}
+
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Hide the top bar */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* Ensure the body is not pushed down */
+body {
+  top: 0px !important;
 }
