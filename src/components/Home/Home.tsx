@@ -254,238 +254,13 @@
 
 // export default HomePage;
 
-// "use client";
-// import React, { useState, useEffect, useContext } from 'react';
-// import Image from 'next/image';
-// import Link from 'next/link';
-// import Head from 'next/head';
-// import { FaBook, FaRobot, FaChartLine, FaUsers, FaGraduationCap, FaUserTie } from 'react-icons/fa';
-// import { useTheme } from '@/context/ThemeContext';
-// import { AuthContext } from "../../context/AuthProvider";
-
-
-// import pencilIcon from "../../assets/icon/pencil-icon.svg";
-// import certificateIcon from "../../assets/icon/certificate-icon.svg";
-// import coursesIcon from "../../assets/icon/cources-icon.svg";
-// import graduateIcon from "../../assets/icon/gratuate-icon.svg";
-// import joinImage from "../../assets/icon/join.png";
-// import shareImage from "../../assets/icon/share.png";
-// import StudentIllustration from "../../assets/icon/student-illustration.png";
-
-// const FeatureCard = ({ icon: Icon, title, description, isDarkMode }) => (
-//   <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300`}>
-//     <Icon className={`w-12 h-12 mb-4 ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`} />
-//     <h3 className="text-xl font-semibold mb-2">{title}</h3>
-//     <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>{description}</p>
-//   </div>
-// );
-
-// const StatCard = ({ icon, title, description, isDarkMode }) => (
-//   <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-lg flex items-center space-x-4 transform hover:scale-105 transition duration-300`}>
-//     <Image src={icon} alt={description} width={50} height={50} className={isDarkMode ? 'text-purple-400' : 'text-purple-600'} />
-//     <div>
-//       <h2 className="text-2xl font-bold">{title}</h2>
-//       <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>{description}</p>
-//     </div>
-//   </div>
-// );
-
-// const HomePage = () => {
-//   const authContext = useContext(AuthContext);
-//   const [isLoggedIn, setIsLoggedIn] = useState(false);
-//   const { isDarkMode } = useTheme();
-//   const [name, setName] = useState("");
-
-//   const { user} = authContext;
-
-//   useEffect(() => {
-//     if (user) {
-//       setIsLoggedIn(true);
-//       setName(user.displayName || '');
-//     } else {
-//       setIsLoggedIn(false);
-//     }
-//   }, [user]);
-
-
-//   const features = [
-//     {
-//       icon: FaBook,
-//       title: "Personalized Learning",
-//       description: "Tailored curricula to meet your unique goals and learning style."
-//     },
-//     {
-//       icon: FaRobot,
-//       title: "AI-Powered Assistance",
-//       description: "Get instant support and personalized recommendations from EKLAVYA AI."
-//     },
-//     {
-//       icon: FaChartLine,
-//       title: "Progress Tracking",
-//       description: "Visualize your learning journey with detailed analytics and insights."
-//     },
-//     {
-//       icon: FaUsers,
-//       title: "Global Community",
-//       description: "Connect with learners worldwide and participate in collaborative projects."
-//     }
-//   ];
-
-//   const stats = [
-//     { icon: pencilIcon, title: "10K!", description: "Online Courses" },
-//     { icon: coursesIcon, title: "200+", description: "Expert Tutors" },
-//     { icon: certificateIcon, title: "6K +", description: "Certified Courses" },
-//     { icon: graduateIcon, title: "60K +", description: "Online Students" },
-//   ];
-
-//   <div className="flex justify-between items-center mb-8">
-//   <h1 className="text-4xl font-bold">Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">{name}</span>!</h1>
-// </div>
-
-//   return (
-//     <>
-//       <Head>
-//         <title>EKLAVYA - Empower Your Learning Journey</title>
-//         <meta name="description" content="Join EKLAVYA to access personalized learning paths, AI-powered recommendations, and a supportive global community." />
-//         <link rel="icon" href="/favicon.ico" />
-//       </Head>
-
-//       <main className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'} min-h-screen transition-colors duration-300`}>
-//         <div className="container mx-auto px-4 py-16">
-//           <section className="hero flex flex-col lg:flex-row items-center justify-between mb-24">
-//             <div className="lg:w-1/2 mb-12 lg:mb-0">
-//               <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
-//                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-//                   Empower Your
-//                 </span>
-//                 <br />
-//                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-400">
-//                   Learning Journey
-//                 </span>
-//               </h1>
-//               <p className={`text-xl ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-8`}>
-//                 Join EKLAVYA to access personalized learning paths, AI-powered recommendations, and a supportive global community.
-//               </p>
-//               {!isLoggedIn ? (
-//                 <div className="space-x-4">
-//                   <Link href="/login" className="bg-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-purple-700 transition duration-300">
-//                     Log In
-//                   </Link>
-//                   <Link href="/register" className="bg-pink-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-pink-700 transition duration-300">
-//                     Register
-//                   </Link>
-//                 </div>
-//               ) : (
-//                 <Link href="/dashboard" className="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300">
-//                   Go to Dashboard
-//                 </Link>
-//               )}
-//             </div>
-//             <div className="lg:w-1/2">
-//               <Image
-//                 src={StudentIllustration}
-//                 alt="Student illustration"
-//                 width={600}
-//                 height={600}
-//                 className="rounded-lg shadow-2xl"
-//               />
-//             </div>
-//           </section>
-
-//           <section className="mb-24">
-//             <h2 className="text-3xl font-bold mb-12 text-center">Why Choose EKLAVYA?</h2>
-//             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-//               {features.map((feature, index) => (
-//                 <FeatureCard key={index} {...feature} isDarkMode={isDarkMode} />
-//               ))}
-//             </div>
-//           </section>
-
-//           <section className="mb-24">
-//             <h2 className="text-3xl font-bold mb-12 text-center">Our Impact</h2>
-//             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-//               {stats.map((stat, index) => (
-//                 <StatCard key={index} {...stat} isDarkMode={isDarkMode} />
-//               ))}
-//             </div>
-//           </section>
-
-//           <section className={`mb-24 ${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-xl p-12 flex flex-col lg:flex-row items-center`}>
-//             <div className="lg:w-1/2 mb-8 lg:mb-0">
-//               <h2 className="text-3xl font-bold mb-6">Master the skills to drive your career</h2>
-//               <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
-//                 Get certified, master modern tech skills, and level up your career — whether you're starting out or a seasoned pro. 95% of EKLAVYA learners report our hands-on content directly helped their careers.
-//               </p>
-//               <Link href="/courses" className="bg-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-purple-700 transition duration-300">
-//                 Explore Courses
-//               </Link>
-//             </div>
-//             <div className="lg:w-1/2 lg:pl-12">
-//               <Image
-//                 src={joinImage}
-//                 alt="Master skills illustration"
-//                 width={500}
-//                 height={400}
-//                 className="rounded-lg shadow-xl"
-//               />
-//             </div>
-//           </section>
-
-//           <section className={`mb-24 ${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-xl p-12 flex flex-col lg:flex-row-reverse items-center`}>
-//             <div className="lg:w-1/2 mb-8 lg:mb-0">
-//               <h2 className="text-3xl font-bold mb-6">Share your knowledge as a Mentor</h2>
-//               <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
-//                 Join our community of expert instructors and help shape the future of online education. Share your expertise and inspire learners worldwide.
-//               </p>
-//               <Link href="/become-mentor" className="bg-pink-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-pink-700 transition duration-300">
-//                 Become a Mentor
-//               </Link>
-//             </div>
-//             <div className="lg:w-1/2 lg:pr-12">
-//               <Image
-//                 src={shareImage}
-//                 alt="Share knowledge illustration"
-//                 width={500}
-//                 height={400}
-//                 className="rounded-lg shadow-xl"
-//               />
-//             </div>
-//           </section>
-
-//           <section>
-//             <h2 className="text-3xl font-bold mb-12 text-center">Featured Learning Paths</h2>
-//             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//               {[
-//                 { title: "Web Development", icon: FaBook },
-//                 { title: "Data Science", icon: FaChartLine },
-//                 { title: "Mobile App Development", icon: FaRobot },
-//               ].map((path, index) => (
-//                 <div key={index} className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-lg`}>
-//                   <path.icon className={`w-12 h-12 mb-4 ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`} />
-//                   <h3 className="text-xl font-semibold mb-2">{path.title}</h3>
-//                   <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mb-4`}>Master the skills needed for a successful career in {path.title.toLowerCase()}.</p>
-//                   <Link href={`/learning-path/${index + 1}`} className={`${isDarkMode ? 'text-purple-400 hover:text-purple-300' : 'text-purple-600 hover:text-purple-500'}`}>
-//                     Explore Path →
-//                   </Link>
-//                 </div>
-//               ))}
-//             </div>
-//           </section>
-//         </div>
-//       </main>
-//     </>
-//   );
-// };
-
-// export default HomePage;
 "use client";
-import React, { useState, useEffect, useContext } from 'react';
+"use client";
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
-import { FaBook, FaRobot, FaChartLine, FaUsers } from 'react-icons/fa';
-import { useTheme } from '@/context/ThemeContext';
-import { AuthContext } from "../../context/AuthProvider";
+import { FaBook, FaRobot, FaChartLine, FaUsers, FaGraduationCap, FaUserTie, FaSun, FaMoon } from 'react-icons/fa';
 
 import pencilIcon from "../../assets/icon/pencil-icon.svg";
 import certificateIcon from "../../assets/icon/certificate-icon.svg";
@@ -494,15 +269,9 @@ import graduateIcon from "../../assets/icon/gratuate-icon.svg";
 import joinImage from "../../assets/icon/join.png";
 import shareImage from "../../assets/icon/share.png";
 import StudentIllustration from "../../assets/icon/student-illustration.png";
+import { useTheme } from '@/context/ThemeContext';
 
-interface FeatureCardProps {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-  isDarkMode: boolean;
-}
-
-const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, description, isDarkMode }) => (
+const FeatureCard = ({ icon: Icon, title, description, isDarkMode }) => (
   <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300`}>
     <Icon className={`w-12 h-12 mb-4 ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`} />
     <h3 className="text-xl font-semibold mb-2">{title}</h3>
@@ -510,14 +279,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
   </div>
 );
 
-interface StatCardProps {
-  icon: string;
-  title: string;
-  description: string;
-  isDarkMode: boolean;
-}
-
-const StatCard: React.FC<StatCardProps> = ({ icon, title, description, isDarkMode }) => (
+const StatCard = ({ icon, title, description, isDarkMode }) => (
   <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-lg flex items-center space-x-4 transform hover:scale-105 transition duration-300`}>
     <Image src={icon} alt={description} width={50} height={50} className={isDarkMode ? 'text-purple-400' : 'text-purple-600'} />
     <div>
@@ -527,23 +289,9 @@ const StatCard: React.FC<StatCardProps> = ({ icon, title, description, isDarkMod
   </div>
 );
 
-const HomePage: React.FC = () => {
-  const authContext = useContext(AuthContext);
+const HomePage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { isDarkMode } = useTheme();
-  const [name, setName] = useState("");
-
- 
-
-  useEffect(() => {
-    if (authContext && authContext.user) {
-      setIsLoggedIn(true);
-      setName(authContext.user.displayName || '');
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, [authContext]);
-
+  const { isDarkMode} = useTheme();
   const features = [
     {
       icon: FaBook,
@@ -584,35 +332,23 @@ const HomePage: React.FC = () => {
 
       <main className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'} min-h-screen transition-colors duration-300`}>
         <div className="container mx-auto px-4 py-16">
-          {/* Hero Section */}
-          <section className="hero flex flex-col lg:flex-row items-center justify-between mb-24">
+          {/* <div className="flex justify-end mb-8">
+            <button 
+              onClick={toggleTheme} 
+              className={`p-2 rounded-full ${isDarkMode ? 'bg-yellow-400 text-gray-900' : 'bg-gray-800 text-yellow-400'}`}
+            >
+              {isDarkMode ? <FaSun size={24} /> : <FaMoon size={24} />}
+            </button>
+          </div> */}
+
+          <section className="hero flex flex-col lg:flex-row items-center justify-between mb-24 lg:flex-wrap">
             <div className="lg:w-1/2 mb-12 lg:mb-0">
-              {/* Dynamic Welcome Message */}
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
-                {isLoggedIn ? (
-                  <>
-                    Welcome back,{" "}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                      {name}
-                    </span>
-                    !
-                  </>
-                ) : (
-                  <>
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                      Empower Your
-                    </span>
-                    <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-400">
-                      Learning Journey
-                    </span>
-                  </>
-                )}
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 leading-tight">
+                Empower Your Learning Journey
               </h1>
               <p className={`text-xl ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-8`}>
-                {isLoggedIn ? `Explore new courses and track your progress, ${name}!` : "Join EKLAVYA to access personalized learning paths, AI-powered recommendations, and a supportive global community."}
+                Join EKLAVYA to access personalized learning paths, AI-powered recommendations, and a supportive global community.
               </p>
-              {/* Conditional Call to Action */}
               {!isLoggedIn ? (
                 <div className="space-x-4">
                   <Link href="/login" className="bg-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-purple-700 transition duration-300">
@@ -639,7 +375,6 @@ const HomePage: React.FC = () => {
             </div>
           </section>
 
-          {/* Features Section */}
           <section className="mb-24">
             <h2 className="text-3xl font-bold mb-12 text-center">Why Choose EKLAVYA?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -649,7 +384,6 @@ const HomePage: React.FC = () => {
             </div>
           </section>
 
-          {/* Stats Section */}
           <section className="mb-24">
             <h2 className="text-3xl font-bold mb-12 text-center">Our Impact</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -659,14 +393,13 @@ const HomePage: React.FC = () => {
             </div>
           </section>
 
-          {/* Additional Sections */}
           <section className={`mb-24 ${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-xl p-12 flex flex-col lg:flex-row items-center`}>
             <div className="lg:w-1/2 mb-8 lg:mb-0">
               <h2 className="text-3xl font-bold mb-6">Master the skills to drive your career</h2>
               <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
-                Get certified, master modern tech skills, and level up your career — whether you&apos;re starting out or a seasoned pro. 95% of EKLAVYA learners report our hands-on content directly helped their careers.
+                Get certified, master modern tech skills, and level up your career — whether you're starting out or a seasoned pro. 95% of EKLAVYA learners report our hands-on content directly helped their careers.
               </p>
-              <Link href="/course" className="bg-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-purple-700 transition duration-300">
+              <Link href="/courses" className="bg-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-purple-700 transition duration-300">
                 Explore Courses
               </Link>
             </div>
@@ -699,6 +432,26 @@ const HomePage: React.FC = () => {
                 height={400}
                 className="rounded-lg shadow-xl"
               />
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-3xl font-bold mb-12 text-center">Featured Learning Paths</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { title: "Web Development", icon: FaBook },
+                { title: "Data Science", icon: FaChartLine },
+                { title: "Mobile App Development", icon: FaRobot },
+              ].map((path, index) => (
+                <div key={index} className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-lg`}>
+                  <path.icon className={`w-12 h-12 mb-4 ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+                  <h3 className="text-xl font-semibold mb-2">{path.title}</h3>
+                  <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mb-4`}>Master the skills needed for a successful career in {path.title.toLowerCase()}.</p>
+                  <Link href={`/learning-path/${index + 1}`} className={`${isDarkMode ? 'text-purple-400 hover:text-purple-300' : 'text-purple-600 hover:text-purple-500'}`}>
+                    Explore Path →
+                  </Link>
+                </div>
+              ))}
             </div>
           </section>
         </div>

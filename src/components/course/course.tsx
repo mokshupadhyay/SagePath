@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTheme } from '@/context/ThemeContext'
 import { FaUser, FaClock, FaBookOpen, FaStar, FaTag, FaGraduationCap } from 'react-icons/fa'
+import Loading from '../Loading/Loading'
 const dummyCourses = [
   {
     "id":"1",
@@ -116,7 +117,7 @@ const dummyCourses = [
   }
 ];
 
-const ImageWithLoader = ({ src, alt, className }: { src: string, alt: string, className?: string }) => {
+const ImageWithLoader = ({ src, alt, className }) => {
   const [isLoading, setIsLoading] = useState(true)
   const { isDarkMode } = useTheme()
 

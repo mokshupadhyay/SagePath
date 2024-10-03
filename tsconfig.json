@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6", // Or "esnext" if you prefer the latest features
+    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
@@ -36,7 +36,6 @@
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "build" // Optional, if you have a build folder
+    "node_modules"
   ]
 }

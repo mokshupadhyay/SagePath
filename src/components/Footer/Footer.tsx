@@ -1,95 +1,16 @@
+// src/components/Footer.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import Link from 'next/link'
 import { useTheme } from '../../context/ThemeContext';
 
-interface GoogleTranslateLayout {
-  SIMPLE: string;
-  HORIZONTAL: string;
-  VERTICAL: string;
-  NONE: string;
-}
-
-interface GoogleTranslate {
-  TranslateElement: {
-    InlineLayout: GoogleTranslateLayout;
-    new (config: {
-      pageLanguage: string;
-      autoDisplay: boolean;
-      includedLanguages: string;
-      layout: GoogleTranslateLayout[keyof GoogleTranslateLayout];
-    }, elementId: string): void;
-  };
-}
-
-declare global {
-  interface Window {
-    googleTranslateElementInit?: () => void;
-    google?: {
-      translate: GoogleTranslate;
-    };
-  }
-}
-
-const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'hi', name: 'हिन्दी' },
-  { code: 'bn', name: 'বাংলা' },
-  { code: 'te', name: 'తెలుగు' },
-  { code: 'ta', name: 'தமிழ்' },
-  { code: 'mr', name: 'मराठी' },
-  { code: 'gu', name: 'ગુજરાતી' },
-  { code: 'kn', name: 'ಕನ್ನಡ' },
-  { code: 'ml', name: 'മലയാളം' },
-  { code: 'pa', name: 'ਪੰਜਾਬੀ' },
-  { code: 'es', name: 'Español' },
-  { code: 'fr', name: 'Français' },
-];
-
-const Footer: React.FC = () => {
+const Footer = () => {
   const { isDarkMode } = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState('English');
-
-  useEffect(() => {
-    const addGoogleTranslateScript = () => {
-      const script = document.createElement('script');
-      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.async = true;
-      document.body.appendChild(script);
-    };
-
-    window.googleTranslateElementInit = () => {
-      if (window.google && window.google.translate) {
-        new window.google.translate.TranslateElement({
-          pageLanguage: 'en',
-          autoDisplay: false,
-          includedLanguages: languages.map(lang => lang.code).join(','),
-          layout: window.google.translate.TranslateElement.InlineLayout.NONE,
-        }, 'google_translate_element');
-      }
-    };
-
-    if (!document.querySelector('script[src*="translate.google.com"]')) {
-      addGoogleTranslateScript();
-    }
-  }, []);
-
-  const changeLanguage = (languageCode: string, languageName: string) => {
-    const selectBox = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (selectBox) {
-      selectBox.value = languageCode;
-      selectBox.dispatchEvent(new Event('change'));
-      setSelectedLanguage(languageName);
-      setIsOpen(false);
-    }
-  };
 
   return (
     <footer className={`${isDarkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-800'} py-8 transition-colors duration-300`}>
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-lg font-semibold mb-4">EkLavya</h3>
             <p className="text-sm">Empowering learners through innovative online education.</p>
@@ -98,11 +19,9 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><Link href="/" className={`hover:${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Home</Link></li>
-              <li><Link href="/learning-paths" className={`hover:${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Learning Paths</Link></li>
-              <li><Link href="/resources" className={`hover:${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Resources</Link></li>
-              <li><Link href="/progress" className={`hover:${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Progress</Link></li>
-              <li><Link href="/community" className={`hover:${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Community</Link></li>
-              <li><Link href="/support" className={`hover:${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Support</Link></li>
+              <li><Link href="/course" className={`hover:${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Courses</Link></li>
+              <li><Link href="/blog" className={`hover:${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Blog</Link></li>
+              <li><Link href="/faq" className={`hover:${isDarkMode ? 'text-white' : 'text-gray-900'}`}>FAQ</Link></li>
             </ul>
           </div>
           <div>
@@ -125,56 +44,13 @@ const Footer: React.FC = () => {
               </a>
             </div>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Language</h3>
-            <div className="relative">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className={`w-full px-4 py-2 text-left rounded-md ${
-                  isDarkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-black text-white hover:bg-gray-800'
-                } focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                  isDarkMode ? 'focus:ring-gray-500' : 'focus:ring-blue-500'
-                }`}
-              >
-                {selectedLanguage}
-                <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                  <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-                    <path d="M7 7l3-3 3 3m0 6l-3 3-3-3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </button>
-              {isOpen && (
-                <div className={`absolute z-10 mt-1 w-full rounded-md shadow-lg ${
-                  isDarkMode ? 'bg-gray-700' : 'bg-white'
-                }`}>
-                  <div className="py-1 max-h-60 overflow-auto">
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => changeLanguage(lang.code, lang.name)}
-                        className={`block w-full text-left px-4 py-2 text-sm ${
-                          isDarkMode
-                            ? 'text-gray-300 hover:bg-gray-600'
-                            : 'text-gray-700 hover:bg-gray-100'
-                        }`}
-                      >
-                        {lang.name}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-            <div id="google_translate_element" style={{ display: 'none' }}></div>
-          </div>
         </div>
-        
         <div className={`mt-8 border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-300'} pt-4 text-sm text-center`}>
           © {new Date().getFullYear()} EkLavya. All rights reserved.
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaGraduationCap, FaRobot, FaSearch,FaClock, FaChartLine } from 'react-icons/fa';
+import { FaGraduationCap, FaRobot, FaSearch, FaSun, FaMoon, FaClock, FaChartLine } from 'react-icons/fa';
 import { useTheme } from '@/context/ThemeContext';
 // Mock data (replace with actual API calls in a real application)
 const mockLearningPaths = [
@@ -18,7 +18,7 @@ const mockRecommendedPaths = [
     { id: 7, title: "UI/UX Design Principles", duration: "8 weeks", difficulty: "Intermediate" },
 ];
 
-const PathCard = ({ path, isDarkMode } : { path: { id: number, title: string, duration: string, difficulty: string }, isDarkMode: boolean }) => (
+const PathCard = ({ path, isDarkMode }) => (
     <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300`}>
     <h3 className="text-xl font-semibold mb-2">{path.title}</h3>
     <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-2 flex items-center`}>
