@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Head from 'next/head';
-import { FaUser, FaAccessibleIcon, FaLanguage, FaEye, FaSun, FaMoon } from 'react-icons/fa';
+import { FaUser, FaAccessibleIcon, FaLanguage, FaEye } from 'react-icons/fa';
 import { useTheme } from '@/context/ThemeContext';
+import { AuthContext } from "../../context/AuthProvider";
 
 // Mock user data (replace with actual data fetching in a real application)
 const mockUserData = {
@@ -11,7 +12,14 @@ const mockUserData = {
   isParent: false,
 };
 
-const ProfileSection = ({ icon: Icon, title, children, isDarkMode }) => (
+interface ProfileSectionProps {
+  icon: React.ElementType;
+  title: string;
+  children: React.ReactNode;
+  isDarkMode: boolean;
+}
+
+const ProfileSection: React.FC<ProfileSectionProps> = ({ icon: Icon, title, children, isDarkMode }) => (
   <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md mb-6`}>
     <div className="flex items-center mb-4">
       <Icon className={`${isDarkMode ? 'text-purple-400' : 'text-purple-600'} text-2xl mr-2`} />
@@ -21,8 +29,10 @@ const ProfileSection = ({ icon: Icon, title, children, isDarkMode }) => (
   </div>
 );
 
-const Profile = () => {
+const Profile: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const authContext = useContext(AuthContext);
+
   const [name, setName] = useState(mockUserData.name);
   const [email, setEmail] = useState(mockUserData.email);
   const [isHighContrast, setIsHighContrast] = useState(false);
@@ -34,6 +44,13 @@ const Profile = () => {
     // Implement API call to save user settings
     console.log('Saving settings:', { name, email, isHighContrast, fontSize, language, isParentView });
   };
+
+  useEffect(() => {
+    if (authContext && authContext.user) {
+      setName(authContext.user.displayName || '');
+      setEmail(authContext.user.email || '');
+    }
+  }, [authContext]);
 
   return (
     <>
@@ -134,7 +151,7 @@ const Profile = () => {
                 Enable Parent View
               </label>
               <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mt-2`}>
-                Parent view allows monitoring of your child's progress and activity.
+                Parent view allows monitoring of your child&apos;s progress and activity.
               </p>
             </div>
           </ProfileSection>

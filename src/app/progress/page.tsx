@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaGraduationCap, FaClock, FaTrophy, FaBook, FaChartLine, FaSun, FaMoon } from 'react-icons/fa';
+import { FaGraduationCap, FaClock, FaTrophy, FaBook, FaChartLine} from 'react-icons/fa';
 import { useTheme } from '@/context/ThemeContext';
 
 // Mock data (replace with actual data fetching in a real application)
@@ -24,7 +24,7 @@ const mockUserProgress = {
   ],
 };
 
-const ProgressCard = ({ icon: Icon, title, value, suffix = '', isDarkMode }) => (
+const ProgressCard = ({ icon: Icon, title, value, suffix = '', isDarkMode } : { icon: React.ElementType, title: string, value: number, suffix?: string, isDarkMode: boolean }) => (
   <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md flex items-center transform hover:scale-105 transition duration-300`}>
     <Icon className={`${isDarkMode ? 'text-purple-400' : 'text-purple-600'} text-3xl mr-4`} />
     <div>
@@ -34,7 +34,7 @@ const ProgressCard = ({ icon: Icon, title, value, suffix = '', isDarkMode }) => 
   </div>
 );
 
-const CourseProgressBar = ({ title, progress, isDarkMode }) => (
+const CourseProgressBar = ({ title, progress, isDarkMode } : { title: string, progress: number, isDarkMode: boolean }) => (
   <div className="mb-4">
     <div className="flex justify-between mb-1">
       <span className="text-base font-medium">{title}</span>
@@ -52,7 +52,6 @@ const CourseProgressBar = ({ title, progress, isDarkMode }) => (
 const ProgressPage = () => {
   const { isDarkMode} = useTheme();
   const {
-    name,
     overallProgress,
     totalCourses,
     completedCourses,

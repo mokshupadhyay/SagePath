@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaComments, FaUsers, FaVideo, FaSearch, FaPlus, FaSun, FaMoon, FaClock } from 'react-icons/fa';
+import { FaComments, FaUsers, FaVideo, FaSearch, FaPlus} from 'react-icons/fa';
 import { useTheme } from '@/context/ThemeContext';
 // Mock data (replace with actual API calls in a real application)
 const mockForums = [
@@ -21,7 +21,7 @@ const mockLiveClasses = [
     { id: 2, title: "Advanced SQL Techniques", instructor: "John Smith", startTime: "Tomorrow, 2 PM" },
 ];
 
-const ForumCard = ({ forum, isDarkMode }) => (
+const ForumCard = ({ forum  , isDarkMode } : { forum: { id: number, title: string, posts: number, lastActive: string }, isDarkMode: boolean } ) => (
     <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300`}>
     <h3 className="text-xl font-semibold mb-2">{forum.title}</h3>
     <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>Posts: {forum.posts}</p>
@@ -32,7 +32,7 @@ const ForumCard = ({ forum, isDarkMode }) => (
   </div>
 );
 
-const StudyGroupCard = ({ group, isDarkMode }) => (
+const StudyGroupCard = ({ group, isDarkMode } : { group: { id: number, title: string, members: number, nextMeeting: string }, isDarkMode: boolean }) => (
     <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300`}>
     <h3 className="text-xl font-semibold mb-2">{group.title}</h3>
     <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>Members: {group.members}</p>
@@ -43,7 +43,7 @@ const StudyGroupCard = ({ group, isDarkMode }) => (
   </div>
 );
 
-const LiveClassCard = ({ liveClass, isDarkMode }) => (
+const LiveClassCard = ({ liveClass, isDarkMode } : { liveClass: { id: number, title: string, instructor: string, startTime: string }, isDarkMode: boolean }) => (
     <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300`}>
     <h3 className="text-xl font-semibold mb-2">{liveClass.title}</h3>
     <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>Instructor: {liveClass.instructor}</p>
@@ -72,10 +72,6 @@ const Community = () => {
       liveClass.title.toLowerCase().includes(searchTerm.toLowerCase())
     ));
   }, [searchTerm]);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
 
   return (
     <>

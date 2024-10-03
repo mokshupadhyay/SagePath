@@ -5,7 +5,9 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    // Add other directories here if necessary
   ],
+  darkMode: 'class', // Enables dark mode via a 'dark' class
   theme: {
     extend: {
       colors: {
@@ -14,6 +16,11 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Uncomment to add useful plugins
+    // require('@tailwindcss/typography'),
+    // require('@tailwindcss/forms'),
+  ],
 };
+
 export default config;

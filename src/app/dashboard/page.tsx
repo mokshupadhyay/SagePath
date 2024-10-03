@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState,useEffect, useContext } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaBook, FaChartLine, FaTasks, FaBell, FaGraduationCap, FaClock, FaSun, FaMoon } from 'react-icons/fa';
+import { FaBook, FaChartLine, FaTasks, FaBell, FaGraduationCap, FaClock} from 'react-icons/fa';
 import { useTheme } from '@/context/ThemeContext';
+import { AuthContext } from '@/context/AuthProvider';
 
-// Mock data (replace with actual data fetching in a real application)
 const mockUserData = {
   name: "John Doe",
   currentCourse: "Advanced Machine Learning",
@@ -27,7 +27,7 @@ const mockUserData = {
   ],
 };
 
-const DashboardCard = ({ icon: Icon, title, children, isDarkMode }) => (
+const DashboardCard = ({ icon: Icon, title, children, isDarkMode } : { icon: React.ElementType, title: string, children: React.ReactNode, isDarkMode: boolean }) => (
   <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300`}>
     <div className="flex items-center mb-4">
       <Icon className={`${isDarkMode ? 'text-purple-400' : 'text-purple-600'} text-2xl mr-2`} />
@@ -37,10 +37,24 @@ const DashboardCard = ({ icon: Icon, title, children, isDarkMode }) => (
   </div>
 );
 
-const Dashboard = () => {
-    const { isDarkMode } = useTheme();  
-    const { name, currentCourse, progress, recommendations, upcomingTasks, recentActivities } = mockUserData;
+const Dashboard: React.FC = () => {
+  const { isDarkMode } = useTheme();
+  const authContext = useContext(AuthContext);
+  const [userName, setUserName] = useState('');
 
+  useEffect(() => {
+    if (authContext && authContext.user) {
+      setUserName(authContext.user.displayName || mockUserData.name);
+    } else {
+      setUserName(mockUserData.name);
+    }
+  }, [authContext]);
+
+  const { currentCourse, progress, recommendations, upcomingTasks, recentActivities } = mockUserData;
+
+  if (!authContext) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Head>
@@ -52,7 +66,7 @@ const Dashboard = () => {
       <main className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'} min-h-screen transition-colors duration-300`}>
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-between items-center mb-8">
-            <h1 className="text-4xl font-bold">Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">{name}</span>!</h1>
+            <h1 className="text-4xl font-bold">Hi, <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">{userName}</span>!</h1>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">

@@ -5,3 +5,53 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* Hide Google Translate attribution and bar */
+.goog-logo-link, 
+.goog-te-gadget span, 
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt, 
+.goog-te-menu-value span,
+.skiptranslate,
+.goog-te-spinner-pos {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  font-size: 0px !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+/* Prevent translation popups on hover */
+.goog-tooltip {
+  display: none !important;
+}
+
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Hide the top bar */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* Ensure the body is not pushed down */
+body {
+  top: 0px !important;
+}

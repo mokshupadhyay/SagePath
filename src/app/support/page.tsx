@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Head from 'next/head';
-import { FaRobot, FaHeart, FaQuestionCircle, FaChevronDown, FaChevronUp, FaPaperPlane, FaSun, FaMoon } from 'react-icons/fa';
+import { FaRobot, FaHeart, FaQuestionCircle, FaChevronDown, FaChevronUp, FaPaperPlane } from 'react-icons/fa';
 import { useTheme } from '@/context/ThemeContext';
 
 // Mock data (replace with actual API calls in a real application)
@@ -17,7 +17,14 @@ const mockMentalHealthResources = [
   { id: 3, title: "Coping with Exam Anxiety", link: "/resources/exam-anxiety" },
 ];
 
-const FAQItem = ({ faq, isDarkMode }) => {
+// Define the type for message
+type Message = {
+  text: string;
+  sender: 'user' | 'ai';
+};
+
+// Component for each FAQ item
+const FAQItem = ({ faq, isDarkMode }: { faq: { id: number, question: string, answer: string }, isDarkMode: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -34,8 +41,9 @@ const FAQItem = ({ faq, isDarkMode }) => {
   );
 };
 
-const AIChat = ({ isDarkMode }) => {
-  const [messages, setMessages] = useState([]);
+// AIChat component with the fixed TypeScript issue
+const AIChat = ({ isDarkMode }: { isDarkMode: boolean }) => {
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState('');
 
   const handleSendMessage = () => {
@@ -46,7 +54,10 @@ const AIChat = ({ isDarkMode }) => {
 
     // Simulate AI response (replace with actual API call)
     setTimeout(() => {
-      setMessages(prevMessages => [...prevMessages, { text: "Thank you for your question. An EKLAVYA support representative will get back to you shortly.", sender: 'ai' }]);
+      setMessages(prevMessages => [
+        ...prevMessages,
+        { text: "Thank you for your question. An EKLAVYA support representative will get back to you shortly.", sender: 'ai' }
+      ]);
     }, 1000);
   };
 
@@ -81,9 +92,9 @@ const AIChat = ({ isDarkMode }) => {
   );
 };
 
+// Main Support component
 const Support = () => {
-  const { isDarkMode} = useTheme();
-
+  const { isDarkMode } = useTheme();
 
   return (
     <>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useContext } from 'react';
 import { useRouter } from 'next/navigation';
@@ -15,7 +15,14 @@ const githubProvider = new GithubAuthProvider();
 const Login: React.FC = () => {
     const router = useRouter();
     const { isDarkMode } = useTheme();
-    const { loginWithEmailAndPassword, loginWithPopUp } = useContext(AuthContext);
+    const authContext = useContext(AuthContext);
+
+    // If AuthContext is null, display a loading or error message
+    if (!authContext) {
+        return <div>Loading...</div>;
+    }
+
+    const { loginWithEmailAndPassword, loginWithPopUp } = authContext;
 
     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -23,33 +30,62 @@ const Login: React.FC = () => {
         const email = (form.email as HTMLInputElement).value;
         const password = (form.password as HTMLInputElement).value;
 
+        if (!loginWithEmailAndPassword) {
+            toast.error('Login function is unavailable.');
+            return;
+        }
+
         try {
             const result = await loginWithEmailAndPassword(email, password);
             toast.success('Login successful');
             console.log(result.user);
             router.push('/');
-        } catch (error) {
-            toast.error(error.message);
+        } catch (error: unknown) {  // Use 'unknown' instead of 'any'
+            if (error instanceof Error) {
+                toast.error(error.message);
+            } else {
+                toast.error('An unknown error occurred.');
+            }
         }
     };
 
     const handleGoogleSignIn = async () => {
+        if (!loginWithPopUp) {
+            toast.error('Google login is unavailable.');
+            return;
+        }
+
         try {
             const result = await loginWithPopUp(googleProvider);
+            console.log(result.user);
             toast.success('Login successful');
             router.push('/');
-        } catch (error) {
-            console.log(error);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                toast.error(error.message);
+            } else {
+                toast.error('An unknown error occurred.');
+            }
         }
     };
 
     const handleGithubSignIn = async () => {
+        if (!loginWithPopUp) {
+            toast.error('GitHub login is unavailable.');
+            return;
+        }
+
         try {
             const result = await loginWithPopUp(githubProvider);
+            console.log(result.user);
             toast.success('Login successful');
             router.push('/');
-        } catch (error) {
-            console.log(error);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                toast.error(error.message);
+            } else {
+                toast.error('An unknown error occurred.');
+            }
         }
     };
 
