@@ -13,10 +13,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Check for saved theme preference or use system preference
+    // Check for saved theme preference or use light mode as default
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setIsDarkMode(savedTheme === 'dark' || (!savedTheme && prefersDark));
+    setIsDarkMode(savedTheme === 'dark');
   }, []);
 
   useEffect(() => {
