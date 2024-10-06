@@ -1,3 +1,4 @@
+// src/components/UserMenu.tsx
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,7 +18,6 @@ import {
   FaTrophy,
 } from "react-icons/fa";
 
-// Define an interface for the user object
 interface User {
   uid: string;
   displayName: string | null;
@@ -95,6 +95,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, isDarkMode }) => {
       <button
         onClick={toggleUserMenu}
         className="flex items-center focus:outline-none transition-transform duration-300 ease-in-out transform hover:scale-110"
+        aria-label="Open user menu"
       >
         {isValidUrl(user.photoURL) ? (
           <Image
@@ -115,7 +116,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, isDarkMode }) => {
         <div
           className={`user-menu absolute right-0 mt-4 w-64 ${
             isDarkMode ? "bg-gray-800" : "bg-white"
-          } rounded-md overflow-hidden shadow-xl z-10`}
+          } rounded-md overflow-hidden shadow-xl z-50`}
         >
           <div className="px-4 py-3 border-b border-gray-700">
             <p
