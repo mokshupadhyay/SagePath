@@ -148,7 +148,6 @@ const Header: React.FC = () => {
      className={`
       ${isDarkMode ? "bg-black text-white" : "bg-white text-black"}
       shadow-md fixed w-full z-50 transition-all duration-300
-      border-b ${isDarkMode ? "border-gray-700" : "border-gray-200"}
       ${isVisible ? 'top-0' : '-top-full'}
     `}
     >
@@ -293,12 +292,8 @@ const Header: React.FC = () => {
             <Link
               href="/login"
               className={`
-              px-4 py-2 rounded-md transition-colors duration-100
-              ${
-                isDarkMode
-                  ? "bg-black text-white hover:bg-gray-700"
-                  : "bg-[#00357c] text-white hover:bg-[#002d69]"
-              }
+              px-4 py-2 rounded-md transition-colors duration-100 bg-[#00357c] text-white hover:bg-[#002d69]
+              
             `}
             >
               LOGIN
@@ -331,7 +326,7 @@ const Header: React.FC = () => {
                     }`}
                     onClick={toggleMenu}
                   >
-                    <item.icon className="mr-2" size={30} />
+                    <item.icon className="mr-2" size={20} />
                     {item.text}
                   </Link>
                 </li>
