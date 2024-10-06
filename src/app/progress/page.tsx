@@ -2,10 +2,10 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaGraduationCap, FaClock, FaTrophy, FaBook, FaChartLine} from 'react-icons/fa';
+import { FaGraduationCap, FaClock, FaTrophy, FaBook, FaChartLine, FaCalendarAlt, FaCheckCircle } from 'react-icons/fa';
 import { useTheme } from '@/context/ThemeContext';
 
-// Mock data (replace with actual data fetching in a real application)
+// Extended mock data
 const mockUserProgress = {
   name: "John Doe",
   overallProgress: 68,
@@ -22,6 +22,31 @@ const mockUserProgress = {
     { id: 4, title: "Introduction to Python Programming" },
     { id: 5, title: "Database Management Systems" },
   ],
+  weeklyProgress: [
+    { week: 'Week 1', hours: 10 },
+    { week: 'Week 2', hours: 15 },
+    { week: 'Week 3', hours: 8 },
+    { week: 'Week 4', hours: 20 },
+  ],
+  skillDistribution: [
+    { name: 'Programming', value: 30 },
+    { name: 'Data Science', value: 25 },
+    { name: 'Web Development', value: 20 },
+    { name: 'Machine Learning', value: 15 },
+    { name: 'DevOps', value: 10 },
+  ],
+  completionRate: [
+    { course: 'Course 1', completed: 100, remaining: 0 },
+    { course: 'Course 2', completed: 75, remaining: 25 },
+    { course: 'Course 3', completed: 50, remaining: 50 },
+    { course: 'Course 4', completed: 25, remaining: 75 },
+    { course: 'Course 5', completed: 0, remaining: 100 },
+  ],
+  streak: 14,
+  nextMilestone: {
+    title: "Complete 5 Courses",
+    progress: 80,
+  },
 };
 
 const ProgressCard = ({ icon: Icon, title, value, suffix = '', isDarkMode } : { icon: React.ElementType, title: string, value: number, suffix?: string, isDarkMode: boolean }) => (
@@ -34,34 +59,21 @@ const ProgressCard = ({ icon: Icon, title, value, suffix = '', isDarkMode } : { 
   </div>
 );
 
-const CourseProgressBar = ({ title, progress, isDarkMode } : { title: string, progress: number, isDarkMode: boolean }) => (
-  <div className="mb-4">
-    <div className="flex justify-between mb-1">
-      <span className="text-base font-medium">{title}</span>
-      <span className="text-sm font-medium">{progress}%</span>
-    </div>
-    <div className={`w-full ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'} rounded-full h-2.5`}>
-      <div
-        className="bg-gradient-to-r from-purple-500 to-pink-500 h-2.5 rounded-full"
-        style={{ width: `${progress}%` }}
-      ></div>
-    </div>
-  </div>
-);
+
 
 const ProgressPage = () => {
-  const { isDarkMode} = useTheme();
+  const { isDarkMode } = useTheme();
   const {
     overallProgress,
     totalCourses,
     completedCourses,
     totalHoursLearned,
     achievements,
-    currentCourses,
     recentCompletions,
+    streak,
+    nextMilestone,
   } = mockUserProgress;
 
- 
   return (
     <>
       <Head>
@@ -72,15 +84,7 @@ const ProgressPage = () => {
 
       <main className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'} min-h-screen transition-colors duration-300`}>
         <div className="container mx-auto px-4 py-8">
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold">Your Learning Progress</h1>
-            {/* <button 
-              onClick={toggleTheme} 
-              className={`p-2 rounded-full ${isDarkMode ? 'bg-yellow-400 text-gray-900' : 'bg-gray-800 text-yellow-400'}`}
-            >
-              {isDarkMode ? <FaSun size={24} /> : <FaMoon size={24} />}
-            </button> */}
-          </div>
+          <h1 className="text-3xl font-bold mb-8">Your Learning Progress</h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <ProgressCard icon={FaChartLine} title="Overall Progress" value={overallProgress} suffix="%" isDarkMode={isDarkMode} />
@@ -89,36 +93,52 @@ const ProgressPage = () => {
             <ProgressCard icon={FaClock} title="Total Hours Learned" value={totalHoursLearned} isDarkMode={isDarkMode} />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-md`}>
-              <h2 className="text-xl font-semibold mb-4">Current Courses</h2>
-              {currentCourses.map((course) => (
-                <CourseProgressBar key={course.id} title={course.title} progress={course.progress} isDarkMode={isDarkMode} />
-              ))}
-            </div>
+          
 
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-md`}>
               <h2 className="text-xl font-semibold mb-4">Recent Completions</h2>
               <ul className="space-y-2">
                 {recentCompletions.map((course) => (
                   <li key={course.id} className="flex items-center">
-                    <FaTrophy className="text-yellow-500 mr-2" />
+                    <FaCheckCircle className="text-green-500 mr-2" />
                     <span>{course.title}</span>
                   </li>
                 ))}
               </ul>
             </div>
+
+            <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-md`}>
+              <h2 className="text-xl font-semibold mb-4">Achievements</h2>
+              <div className="flex items-center mb-4">
+                <FaTrophy className="text-yellow-500 text-3xl mr-4" />
+                <p className="text-2xl font-bold">{achievements} Unlocked</p>
+              </div>
+              <Link href="/achievements" className={`${isDarkMode ? 'text-purple-400 hover:text-purple-300' : 'text-purple-600 hover:text-purple-500'} inline-block`}>
+                View All Achievements →
+              </Link>
+            </div>
+
+            <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-md`}>
+              <h2 className="text-xl font-semibold mb-4">Learning Streak</h2>
+              <div className="flex items-center mb-4">
+                <FaCalendarAlt className="text-blue-500 text-3xl mr-4" />
+                <p className="text-2xl font-bold">{streak} Days</p>
+              </div>
+              <p>Keep up the great work!</p>
+            </div>
           </div>
 
           <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-md mb-8`}>
-            <h2 className="text-xl font-semibold mb-4">Achievements</h2>
-            <div className="flex items-center">
-              <FaTrophy className="text-yellow-500 text-3xl mr-4" />
-              <p className="text-2xl font-bold">{achievements} Achievements Unlocked</p>
+            <h2 className="text-xl font-semibold mb-4">Next Milestone</h2>
+            <p className="mb-2">{nextMilestone.title}</p>
+            <div className={`w-full ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'} rounded-full h-2.5`}>
+              <div
+                className="bg-gradient-to-r from-purple-500 to-pink-500 h-2.5 rounded-full"
+                style={{ width: `${nextMilestone.progress}%` }}
+              ></div>
             </div>
-            <Link href="/achievements" className={`${isDarkMode ? 'text-purple-400 hover:text-purple-300' : 'text-purple-600 hover:text-purple-500'} mt-4 inline-block`}>
-              View All Achievements →
-            </Link>
+            <p className="mt-2 text-sm">{nextMilestone.progress}% progress</p>
           </div>
 
           <div className="text-center">

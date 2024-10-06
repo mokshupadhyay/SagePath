@@ -1,16 +1,10 @@
 "use client";
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { FaUser, FaAccessibleIcon, FaLanguage, FaEye } from 'react-icons/fa';
 import { useTheme } from '@/context/ThemeContext';
-import { AuthContext } from "../../context/AuthProvider";
-
-// Mock user data (replace with actual data fetching in a real application)
-const mockUserData = {
-  name: "John Doe",
-  email: "john.doe@example.com",
-  isParent: false,
-};
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 
 interface ProfileSectionProps {
   icon: React.ElementType;
@@ -31,26 +25,38 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({ icon: Icon, title, chil
 
 const Profile: React.FC = () => {
   const { isDarkMode } = useTheme();
-  const authContext = useContext(AuthContext);
+  const { user, initialized } = useSelector((state: RootState) => state.auth);
+  const isLoggedIn = initialized && user !== null;
 
-  const [name, setName] = useState(mockUserData.name);
-  const [email, setEmail] = useState(mockUserData.email);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [isHighContrast, setIsHighContrast] = useState(false);
   const [fontSize, setFontSize] = useState('medium');
   const [language, setLanguage] = useState('english');
-  const [isParentView, setIsParentView] = useState(mockUserData.isParent);
+  const [isParentView, setIsParentView] = useState(false);
+
+  useEffect(() => {
+    if (isLoggedIn && user) {
+      setName(user.displayName || '');
+      setEmail(user.email || '');
+      // You might want to fetch additional user preferences here
+      // or store them in the auth state if they're available
+    }
+  }, [isLoggedIn, user]);
 
   const handleSaveSettings = () => {
     // Implement API call to save user settings
     console.log('Saving settings:', { name, email, isHighContrast, fontSize, language, isParentView });
+    // You might want to dispatch an action here to update the user's preferences in the Redux store
   };
 
-  useEffect(() => {
-    if (authContext && authContext.user) {
-      setName(authContext.user.displayName || '');
-      setEmail(authContext.user.email || '');
-    }
-  }, [authContext]);
+  if (!initialized) {
+    return <div>Loading...</div>;
+  }
+
+  if (!isLoggedIn) {
+    return <div>Please log in to view your profile.</div>;
+  }
 
   return (
     <>
