@@ -7,8 +7,8 @@ import { Providers } from '@/providers/Providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'EkLavya',
-  description: 'EkLavya Learning Platform',
+  title: 'Sage Path',
+  description: 'Sage Path Learning Platform',
 }
 
 export default function RootLayout({

@@ -5,8 +5,8 @@ import Link from 'next/link'
 export default function Blog() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">EkLavya Blog</h1>
-      
+      <h1 className="text-3xl font-bold mb-8">Sage Path Blog</h1>
+
       <div className="grid md:grid-cols-2 gap-8">
         {/* Replace with actual blog post data */}
         {[1, 2, 3, 4].map((post) => (
@@ -21,7 +21,7 @@ export default function Blog() {
           </div>
         ))}
       </div>
-      
+
       <div className="mt-8 flex justify-center">
         <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
           Load More Posts

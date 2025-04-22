@@ -53,15 +53,15 @@ export default function BecomeMentorPage() {
               </span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Share your expertise, inspire learners, and make a global impact with EKLAVYA. Join our community of passionate mentors today!
+              Share your expertise, inspire learners, and make a global impact with SAGEPATH. Join our community of passionate mentors today!
             </p>
           </div>
           <div className="lg:w-1/2">
-            <Image 
-              src={teacherIllustration} 
-              alt="Teacher Illustration" 
-              width={600} 
-              height={400} 
+            <Image
+              src={teacherIllustration}
+              alt="Teacher Illustration"
+              width={600}
+              height={400}
               className="w-full h-auto rounded-lg shadow-2xl"
             />
           </div>

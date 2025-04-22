@@ -49,7 +49,7 @@ const mockUserProgress = {
   },
 };
 
-const ProgressCard = ({ icon: Icon, title, value, suffix = '', isDarkMode } : { icon: React.ElementType, title: string, value: number, suffix?: string, isDarkMode: boolean }) => (
+const ProgressCard = ({ icon: Icon, title, value, suffix = '', isDarkMode }: { icon: React.ElementType, title: string, value: number, suffix?: string, isDarkMode: boolean }) => (
   <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md flex items-center transform hover:scale-105 transition duration-300`}>
     <Icon className={`${isDarkMode ? 'text-purple-400' : 'text-purple-600'} text-3xl mr-4`} />
     <div>
@@ -77,8 +77,8 @@ const ProgressPage = () => {
   return (
     <>
       <Head>
-        <title>Your Learning Progress - EKLAVYA</title>
-        <meta name="description" content="Track your learning journey and see your progress on EKLAVYA." />
+        <title>Your Learning Progress - Sage Path</title>
+        <meta name="description" content="Track your learning journey and see your progress on Sage Path." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -93,7 +93,7 @@ const ProgressPage = () => {
             <ProgressCard icon={FaClock} title="Total Hours Learned" value={totalHoursLearned} isDarkMode={isDarkMode} />
           </div>
 
-          
+
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-md`}>

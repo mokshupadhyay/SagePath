@@ -23,7 +23,7 @@
 //   {
 //     image: StudentIllustration,
 //     alt: "Student studying online",
-//     text: "Empower your learning journey with EKLAVYA's personalized courses."
+//     text: "Empower your learning journey with Sage Path's personalized courses."
 //   },
 //   {
 //     image: StudentIllustration1,
@@ -33,7 +33,7 @@
 //   {
 //     image: StudentIllustration2,
 //     alt: "Student celebrating achievement",
-//     text: "Track your progress and celebrate milestones with EKLAVYA's analytics."
+//     text: "Track your progress and celebrate milestones with Sage Path's analytics."
 //   },
 //   {
 //     image: StudentIllustration3,
@@ -112,7 +112,7 @@
 //     {
 //       icon: FaRobot,
 //       title: "AI-Powered Assistance",
-//       description: "Get instant support and personalized recommendations from EKLAVYA AI."
+//       description: "Get instant support and personalized recommendations from Sage Path AI."
 //     },
 //     {
 //       icon: FaChartLine,
@@ -136,8 +136,8 @@
 //   return (
 //     <>
 //       <Head>
-//         <title>EKLAVYA - Empower Your Learning Journey</title>
-//         <meta name="description" content="Join EKLAVYA to access personalized learning paths, AI-powered recommendations, and a supportive global community." />
+//         <title>Sage Path - Empower Your Learning Journey</title>
+//         <meta name="description" content="Join Sage Path to access personalized learning paths, AI-powered recommendations, and a supportive global community." />
 //         <link rel="icon" href="/favicon.ico" />
 //       </Head>
 
@@ -227,7 +227,7 @@
 
 //           {/* Features Section */}
 //           <section className="mb-12 md:mb-24">
-//             <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center">Why Choose EKLAVYA?</h2>
+//             <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center">Why Choose Sage Path?</h2>
 //             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
 //               {features.map((feature, index) => (
 //                 <FeatureCard key={index} {...feature} isDarkMode={isDarkMode} />
@@ -250,7 +250,7 @@
 //             <div className="lg:w-1/2 mb-6 lg:mb-0">
 //               <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Master the skills to drive your career</h2>
 //               <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
-//                 Get certified, master modern tech skills, and level up your career — whether you're starting out or a seasoned pro. 95% of EKLAVYA learners report our hands-on content directly helped their careers.
+//                 Get certified, master modern tech skills, and level up your career — whether you're starting out or a seasoned pro. 95% of Sage Path learners report our hands-on content directly helped their careers.
 //               </p>
 //               <Link href="/course" className="inline-block bg-purple-600 text-white px-6 md:px-8 py-3 rounded-full text-lg font-semibold hover:bg-purple-700 transition duration-300">
 //                 Explore Courses
@@ -320,7 +320,7 @@ const carouselData = [
   {
     image: StudentIllustration,
     alt: "Student studying online",
-    text: "Empower your learning journey with EKLAVYA's personalized courses.",
+    text: "Empower your learning journey with Sage Path's personalized courses.",
   },
   {
     image: StudentIllustration1,
@@ -330,7 +330,7 @@ const carouselData = [
   {
     image: StudentIllustration2,
     alt: "Student celebrating achievement",
-    text: "Track your progress and celebrate milestones with EKLAVYA's analytics.",
+    text: "Track your progress and celebrate milestones with Sage Path's analytics.",
   },
   {
     image: StudentIllustration3,
@@ -353,14 +353,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   isDarkMode,
 }) => (
   <div
-    className={`${
-      isDarkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
-    } p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300`}
+    className={`${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
+      } p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300`}
   >
     <Icon
-      className={`w-12 h-12 mb-4 ${
-        isDarkMode ? "text-purple-400" : "text-purple-600"
-      }`}
+      className={`w-12 h-12 mb-4 ${isDarkMode ? "text-purple-400" : "text-purple-600"
+        }`}
     />
     <h3 className="text-xl font-semibold mb-2">{title}</h3>
     <p className={isDarkMode ? "text-gray-400" : "text-gray-600"}>
@@ -383,9 +381,8 @@ const StatCard: React.FC<StatCardProps> = ({
   isDarkMode,
 }) => (
   <div
-    className={`${
-      isDarkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
-    } p-6 rounded-lg shadow-lg flex items-center space-x-4 transform hover:scale-105 transition duration-300`}
+    className={`${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
+      } p-6 rounded-lg shadow-lg flex items-center space-x-4 transform hover:scale-105 transition duration-300`}
   >
     <Image
       src={icon}
@@ -422,7 +419,7 @@ const HomePage: React.FC = () => {
       icon: FaRobot,
       title: "AI-Powered Assistance",
       description:
-        "Get instant support and personalized recommendations from EKLAVYA AI.",
+        "Get instant support and personalized recommendations from Sage Path AI.",
     },
     {
       icon: FaChartLine,
@@ -448,18 +445,17 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Head>
-        <title>EKLAVYA - Empower Your Learning Journey</title>
+        <title>Sage Path - Empower Your Learning Journey</title>
         <meta
           name="description"
-          content="Join EKLAVYA to access personalized learning paths, AI-powered recommendations, and a supportive global community."
+          content="Join Sage Path to access personalized learning paths, AI-powered recommendations, and a supportive global community."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main
-        className={`${
-          isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-800"
-        } min-h-screen transition-colors duration-300 `}
+        className={`${isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-800"
+          } min-h-screen transition-colors duration-300 `}
       >
         <div className="container mx-auto px-4 py-8">
           {/* Hero Section */}
@@ -486,18 +482,16 @@ const HomePage: React.FC = () => {
                 )}
               </h1>
               <p
-                className={`text-sm md:text-lg lg:text-xl xl:text-2xl ${
-                  isDarkMode ? "text-white" : "text-black"
-                } mb-6`}
+                className={`text-sm md:text-lg lg:text-xl xl:text-2xl ${isDarkMode ? "text-white" : "text-black"
+                  } mb-6`}
               >
                 {isLoggedIn
                   ? `Explore new courses and track your progress, ${name}!`
-                  : "Join EKLAVYA to access personalized learning paths, AI-powered recommendations, and a supportive global community."}
+                  : "Join Sage Path to access personalized learning paths, AI-powered recommendations, and a supportive global community."}
               </p>
               <p
-                className={`text-sm md:text-lg lg:text-xl xl:text-2xl ${
-                  isDarkMode ? "text-gray-100" : "text-gray-600"
-                } mb-6`}
+                className={`text-sm md:text-lg lg:text-xl xl:text-2xl ${isDarkMode ? "text-gray-100" : "text-gray-600"
+                  } mb-6`}
               >
                 {carouselData[currentImageIndex].text}
               </p>
@@ -542,7 +536,7 @@ const HomePage: React.FC = () => {
           {/* Features Section */}
           <section className="mb-12 md:mb-24">
             <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center">
-              Why Choose EKLAVYA?
+              Why Choose Sage Path?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {features.map((feature, index) => (
@@ -565,22 +559,20 @@ const HomePage: React.FC = () => {
 
           {/* Additional Sections */}
           <section
-            className={`mb-12 md:mb-24 ${
-              isDarkMode ? "bg-gray-800" : "bg-white"
-            } rounded-xl p-6 md:p-12 flex flex-col lg:flex-row items-center`}
+            className={`mb-12 md:mb-24 ${isDarkMode ? "bg-gray-800" : "bg-white"
+              } rounded-xl p-6 md:p-12 flex flex-col lg:flex-row items-center`}
           >
             <div className="lg:w-1/2 mb-6 lg:mb-0">
               <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">
                 Master the skills to drive your career
               </h2>
               <p
-                className={`${
-                  isDarkMode ? "text-gray-300" : "text-gray-600"
-                } mb-6`}
+                className={`${isDarkMode ? "text-gray-300" : "text-gray-600"
+                  } mb-6`}
               >
                 Get certified, master modern tech skills, and level up your
                 career — whether you&apos;re starting out or a seasoned pro. 95%
-                of EKLAVYA learners report our hands-on content directly helped
+                of Sage Path learners report our hands-on content directly helped
                 their careers.
               </p>
 
@@ -603,18 +595,16 @@ const HomePage: React.FC = () => {
           </section>
 
           <section
-            className={`mb-12 md:mb-24 ${
-              isDarkMode ? "bg-gray-800" : "bg-white"
-            } rounded-xl p-6 md:p-12 flex flex-col lg:flex-row-reverse items-center`}
+            className={`mb-12 md:mb-24 ${isDarkMode ? "bg-gray-800" : "bg-white"
+              } rounded-xl p-6 md:p-12 flex flex-col lg:flex-row-reverse items-center`}
           >
             <div className="lg:w-1/2 mb-6 lg:mb-0">
               <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">
                 Share your knowledge as a Mentor
               </h2>
               <p
-                className={`${
-                  isDarkMode ? "text-gray-300" : "text-gray-600"
-                } mb-6`}
+                className={`${isDarkMode ? "text-gray-300" : "text-gray-600"
+                  } mb-6`}
               >
                 Join our community of expert instructors and help shape the
                 future of online education. Share your expertise and inspire

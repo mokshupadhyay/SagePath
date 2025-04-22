@@ -56,7 +56,7 @@ const AIChat = ({ isDarkMode }: { isDarkMode: boolean }) => {
     setTimeout(() => {
       setMessages(prevMessages => [
         ...prevMessages,
-        { text: "Thank you for your question. An EKLAVYA support representative will get back to you shortly.", sender: 'ai' }
+        { text: "Thank you for your question. An Sage Path support representative will get back to you shortly.", sender: 'ai' }
       ]);
     }, 1000);
   };
@@ -99,8 +99,8 @@ const Support = () => {
   return (
     <>
       <Head>
-        <title>EKLAVYA Support</title>
-        <meta name="description" content="Get help with AI chatbot, access mental health resources, and find answers to frequently asked questions on EKLAVYA." />
+        <title>Sage Path Support</title>
+        <meta name="description" content="Get help with AI chatbot, access mental health resources, and find answers to frequently asked questions on Sage Path." />
       </Head>
 
       <div className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'} min-h-screen transition-colors duration-300`}>

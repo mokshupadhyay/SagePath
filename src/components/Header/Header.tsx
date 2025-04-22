@@ -90,13 +90,13 @@ const Header: React.FC = () => {
   useEffect(() => {
     const controlHeader = () => {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY < lastScrollY) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -111,7 +111,7 @@ const Header: React.FC = () => {
     { icon: FaUser, text: "Profile", href: "/profile" },
     { icon: FaBell, text: "Notification", href: "/notifications" },
     { icon: FaTrophy, text: "Progress", href: "/progress" },
-    { icon: FaHeadset, text: "Support", href: "/support" },  
+    { icon: FaHeadset, text: "Support", href: "/support" },
     { icon: FaCog, text: "Settings", href: "/settings" },
   ];
 
@@ -145,7 +145,7 @@ const Header: React.FC = () => {
 
   return (
     <header
-     className={`
+      className={`
       ${isDarkMode ? "bg-black text-white" : "bg-white text-black"}
       shadow-md fixed w-full z-50 transition-all duration-300
       ${isVisible ? 'top-0' : '-top-full'}
@@ -177,7 +177,7 @@ const Header: React.FC = () => {
           )}
 
           <Link href="/" className="text-xl font-bold z-50">
-            EkLavya
+            Sage Path
           </Link>
         </div>
 
@@ -187,11 +187,10 @@ const Header: React.FC = () => {
               <li key={index}>
                 <Link
                   href={item.href}
-                  className={`${
-                    isDarkMode
+                  className={`${isDarkMode
                       ? "text-gray-300 hover:text-white"
                       : "text-gray-700 hover:text-gray-900"
-                  }`}
+                    }`}
                 >
                   {item.text}
                 </Link>
@@ -203,11 +202,10 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-4 z-50">
           <button
             onClick={handleToggleTheme}
-            className={`p-2 rounded-full transition-colors duration-300 ${
-              isDarkMode
+            className={`p-2 rounded-full transition-colors duration-300 ${isDarkMode
                 ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
                 : "bg-gray-200 text-gray-600 hover:bg-gray-300"
-            }`}
+              }`}
           >
             {isDarkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
           </button>
@@ -235,22 +233,19 @@ const Header: React.FC = () => {
               </button>
               {isUserMenuOpen && (
                 <div
-                  className={`user-menu absolute right-0 mt-4 w-64 ${
-                    isDarkMode ? "bg-gray-800" : "bg-white"
-                  } rounded-md overflow-hidden shadow-xl z-10`}
+                  className={`user-menu absolute right-0 mt-4 w-64 ${isDarkMode ? "bg-gray-800" : "bg-white"
+                    } rounded-md overflow-hidden shadow-xl z-10`}
                 >
                   <div className="px-4 py-3 border-b border-gray-700">
                     <p
-                      className={`text-sm font-medium ${
-                        isDarkMode ? "text-pink-300" : "text-pink-500"
-                      }`}
+                      className={`text-sm font-medium ${isDarkMode ? "text-pink-300" : "text-pink-500"
+                        }`}
                     >
                       {user.displayName}
                     </p>
                     <p
-                      className={`text-xs ${
-                        isDarkMode ? "text-gray-400" : "text-gray-500"
-                      }`}
+                      className={`text-xs ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                        }`}
                     >
                       {user.email}
                     </p>
@@ -260,11 +255,10 @@ const Header: React.FC = () => {
                       <Link
                         key={index}
                         href={item.href}
-                        className={`flex items-center px-4 py-2 text-sm ${
-                          isDarkMode
+                        className={`flex items-center px-4 py-2 text-sm ${isDarkMode
                             ? "text-gray-300 hover:bg-gray-700"
                             : "text-gray-700 hover:bg-gray-100"
-                        }`}
+                          }`}
                         onClick={toggleUserMenu}
                       >
                         <item.icon className="mr-3" size={16} />
@@ -275,11 +269,10 @@ const Header: React.FC = () => {
                   <div className="border-t border-gray-700 py-2">
                     <button
                       onClick={providerLogOut}
-                      className={`flex items-center w-full px-4 py-2 text-sm text-left ${
-                        isDarkMode
+                      className={`flex items-center w-full px-4 py-2 text-sm text-left ${isDarkMode
                           ? "text-gray-300 hover:bg-gray-700"
                           : "text-gray-700 hover:bg-gray-100"
-                      }`}
+                        }`}
                     >
                       <FaSignOutAlt className="mr-3" size={16} />
                       Logout
@@ -319,11 +312,10 @@ const Header: React.FC = () => {
                 <li className="flex justify-center items-center" key={index}>
                   <Link
                     href={item.href}
-                    className={`flex items-center text-2xl ${
-                      isDarkMode
+                    className={`flex items-center text-2xl ${isDarkMode
                         ? "text-white hover:text-gray-300"
                         : "text-gray-800 hover:text-gray-600"
-                    }`}
+                      }`}
                     onClick={toggleMenu}
                   >
                     <item.icon className="mr-2" size={20} />

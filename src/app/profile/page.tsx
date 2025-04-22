@@ -61,8 +61,8 @@ const Profile: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Your EKLAVYA Profile</title>
-        <meta name="description" content="Manage your EKLAVYA profile, accessibility preferences, and account settings." />
+        <title>Your Sage Path Profile</title>
+        <meta name="description" content="Manage your Sage Path profile, accessibility preferences, and account settings." />
       </Head>
 
       <div className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'} min-h-screen transition-colors duration-300`}>

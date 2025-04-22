@@ -2,27 +2,27 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaComments, FaUsers, FaVideo, FaSearch, FaPlus} from 'react-icons/fa';
+import { FaComments, FaUsers, FaVideo, FaSearch, FaPlus } from 'react-icons/fa';
 import { useTheme } from '@/context/ThemeContext';
 // Mock data (replace with actual API calls in a real application)
 const mockForums = [
-    { id: 1, title: "Python Programming", posts: 156, lastActive: "2 hours ago" },
-    { id: 2, title: "Web Development", posts: 203, lastActive: "5 minutes ago" },
-    { id: 3, title: "Data Science", posts: 89, lastActive: "1 day ago" },
+  { id: 1, title: "Python Programming", posts: 156, lastActive: "2 hours ago" },
+  { id: 2, title: "Web Development", posts: 203, lastActive: "5 minutes ago" },
+  { id: 3, title: "Data Science", posts: 89, lastActive: "1 day ago" },
 ];
 
 const mockStudyGroups = [
-    { id: 1, title: "JavaScript Study Group", members: 15, nextMeeting: "Tomorrow, 3 PM" },
-    { id: 2, title: "Machine Learning Enthusiasts", members: 23, nextMeeting: "Friday, 6 PM" },
+  { id: 1, title: "JavaScript Study Group", members: 15, nextMeeting: "Tomorrow, 3 PM" },
+  { id: 2, title: "Machine Learning Enthusiasts", members: 23, nextMeeting: "Friday, 6 PM" },
 ];
 
 const mockLiveClasses = [
-    { id: 1, title: "Introduction to React Hooks", instructor: "Jane Doe", startTime: "Today, 7 PM" },
-    { id: 2, title: "Advanced SQL Techniques", instructor: "John Smith", startTime: "Tomorrow, 2 PM" },
+  { id: 1, title: "Introduction to React Hooks", instructor: "Jane Doe", startTime: "Today, 7 PM" },
+  { id: 2, title: "Advanced SQL Techniques", instructor: "John Smith", startTime: "Tomorrow, 2 PM" },
 ];
 
-const ForumCard = ({ forum  , isDarkMode } : { forum: { id: number, title: string, posts: number, lastActive: string }, isDarkMode: boolean } ) => (
-    <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300`}>
+const ForumCard = ({ forum, isDarkMode }: { forum: { id: number, title: string, posts: number, lastActive: string }, isDarkMode: boolean }) => (
+  <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300`}>
     <h3 className="text-xl font-semibold mb-2">{forum.title}</h3>
     <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>Posts: {forum.posts}</p>
     <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>Last active: {forum.lastActive}</p>
@@ -32,8 +32,8 @@ const ForumCard = ({ forum  , isDarkMode } : { forum: { id: number, title: strin
   </div>
 );
 
-const StudyGroupCard = ({ group, isDarkMode } : { group: { id: number, title: string, members: number, nextMeeting: string }, isDarkMode: boolean }) => (
-    <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300`}>
+const StudyGroupCard = ({ group, isDarkMode }: { group: { id: number, title: string, members: number, nextMeeting: string }, isDarkMode: boolean }) => (
+  <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300`}>
     <h3 className="text-xl font-semibold mb-2">{group.title}</h3>
     <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>Members: {group.members}</p>
     <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>Next meeting: {group.nextMeeting}</p>
@@ -43,8 +43,8 @@ const StudyGroupCard = ({ group, isDarkMode } : { group: { id: number, title: st
   </div>
 );
 
-const LiveClassCard = ({ liveClass, isDarkMode } : { liveClass: { id: number, title: string, instructor: string, startTime: string }, isDarkMode: boolean }) => (
-    <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300`}>
+const LiveClassCard = ({ liveClass, isDarkMode }: { liveClass: { id: number, title: string, instructor: string, startTime: string }, isDarkMode: boolean }) => (
+  <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300`}>
     <h3 className="text-xl font-semibold mb-2">{liveClass.title}</h3>
     <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>Instructor: {liveClass.instructor}</p>
     <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>Starts: {liveClass.startTime}</p>
@@ -55,20 +55,20 @@ const LiveClassCard = ({ liveClass, isDarkMode } : { liveClass: { id: number, ti
 );
 
 const Community = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [filteredForums, setFilteredForums] = useState(mockForums);
-    const [filteredStudyGroups, setFilteredStudyGroups] = useState(mockStudyGroups);
-    const { isDarkMode } = useTheme();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredForums, setFilteredForums] = useState(mockForums);
+  const [filteredStudyGroups, setFilteredStudyGroups] = useState(mockStudyGroups);
+  const { isDarkMode } = useTheme();
   const [filteredLiveClasses, setFilteredLiveClasses] = useState(mockLiveClasses);
 
   useEffect(() => {
-    setFilteredForums(mockForums.filter(forum => 
+    setFilteredForums(mockForums.filter(forum =>
       forum.title.toLowerCase().includes(searchTerm.toLowerCase())
     ));
-    setFilteredStudyGroups(mockStudyGroups.filter(group => 
+    setFilteredStudyGroups(mockStudyGroups.filter(group =>
       group.title.toLowerCase().includes(searchTerm.toLowerCase())
     ));
-    setFilteredLiveClasses(mockLiveClasses.filter(liveClass => 
+    setFilteredLiveClasses(mockLiveClasses.filter(liveClass =>
       liveClass.title.toLowerCase().includes(searchTerm.toLowerCase())
     ));
   }, [searchTerm]);
@@ -76,8 +76,8 @@ const Community = () => {
   return (
     <>
       <Head>
-        <title>EKLAVYA Community</title>
-        <meta name="description" content="Join discussion forums, virtual study groups, and live classes in the EKLAVYA learning community." />
+        <title>Sage Path Community</title>
+        <meta name="description" content="Join discussion forums, virtual study groups, and live classes in the Sage Path learning community." />
       </Head>
 
       <div className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'} min-h-screen transition-colors duration-300`}>
@@ -93,19 +93,18 @@ const Community = () => {
           </div> */}
 
           <div className={`mb-8 flex items-center ${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-md`}>
-  <FaSearch className={`${isDarkMode ? 'text-gray-400' : 'text-gray-500'} ml-4`} />
-  <input
-    type="text"
-    placeholder="Search community..."
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-    className={`w-full p-4 rounded-lg focus:outline-none ${
-      isDarkMode 
-        ? 'bg-gray-800 text-white placeholder-gray-400' 
-        : 'bg-white text-gray-800 placeholder-gray-500'
-    }`}
-  />
-</div>
+            <FaSearch className={`${isDarkMode ? 'text-gray-400' : 'text-gray-500'} ml-4`} />
+            <input
+              type="text"
+              placeholder="Search community..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className={`w-full p-4 rounded-lg focus:outline-none ${isDarkMode
+                ? 'bg-gray-800 text-white placeholder-gray-400'
+                : 'bg-white text-gray-800 placeholder-gray-500'
+                }`}
+            />
+          </div>
 
           <section className="mb-12">
             <div className="flex justify-between items-center mb-4">

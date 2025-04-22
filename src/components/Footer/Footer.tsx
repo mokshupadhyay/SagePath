@@ -14,7 +14,7 @@ interface GoogleTranslateLayout {
 interface GoogleTranslate {
   TranslateElement: {
     InlineLayout: GoogleTranslateLayout;
-    new (config: {
+    new(config: {
       pageLanguage: string;
       autoDisplay: boolean;
       includedLanguages: string;
@@ -328,7 +328,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-semibold mb-4">EkLavya</h3>
+            <h3 className="text-lg font-semibold mb-4">Sage Path</h3>
             <p className="text-sm">Empowering learners through innovative online education.</p>
           </div>
           <div>
@@ -363,49 +363,45 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div>
-          <h3 className="text-lg font-semibold mb-4">Language</h3>
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={`w-full px-4 py-2 text-left rounded-md ${
-                isDarkMode ? 'bg-gray-600 text-white hover:bg-gray-700' : 'bg-gray-200 text-black hover:bg-gray-300'
-              } focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                isDarkMode ? 'focus:ring-gray-500' : 'focus:ring-blue-500'
-              }`}
-            >
-              {selectedLanguage}
-              <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-                  <path d="M7 7l3-3 3 3m0 6l-3 3-3-3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-            </button>
-            {isOpen && (
-              <div className={`absolute z-10 mt-1 w-full rounded-md shadow-lg ${
-                isDarkMode ? 'bg-gray-700' : 'bg-white'
-              } max-h-60 overflow-y-auto`}>
-                {supportedLanguages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => changeLanguage(lang.code, lang.name)}
-                    className={`block w-full text-left px-4 py-2 text-sm ${
-                      isDarkMode
-                        ? 'text-gray-300 hover:bg-gray-600'
-                        : 'text-gray-700 hover:bg-gray-100'
-                    } ${selectedLanguage === lang.name ? 'font-bold' : ''}`}
-                  >
-                    {lang.name}
-                  </button>
-                ))}
-              </div>
-            )}
+            <h3 className="text-lg font-semibold mb-4">Language</h3>
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={`w-full px-4 py-2 text-left rounded-md ${isDarkMode ? 'bg-gray-600 text-white hover:bg-gray-700' : 'bg-gray-200 text-black hover:bg-gray-300'
+                  } focus:outline-none focus:ring-2 focus:ring-offset-2 ${isDarkMode ? 'focus:ring-gray-500' : 'focus:ring-blue-500'
+                  }`}
+              >
+                {selectedLanguage}
+                <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                  <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                    <path d="M7 7l3-3 3 3m0 6l-3 3-3-3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </button>
+              {isOpen && (
+                <div className={`absolute z-10 mt-1 w-full rounded-md shadow-lg ${isDarkMode ? 'bg-gray-700' : 'bg-white'
+                  } max-h-60 overflow-y-auto`}>
+                  {supportedLanguages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => changeLanguage(lang.code, lang.name)}
+                      className={`block w-full text-left px-4 py-2 text-sm ${isDarkMode
+                          ? 'text-gray-300 hover:bg-gray-600'
+                          : 'text-gray-700 hover:bg-gray-100'
+                        } ${selectedLanguage === lang.name ? 'font-bold' : ''}`}
+                    >
+                      {lang.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div id="google_translate_element" style={{ display: 'none' }}></div>
           </div>
-          <div id="google_translate_element" style={{ display: 'none' }}></div>
         </div>
-        </div>
-        
+
         <div className={`mt-8 border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-300'} pt-4 text-sm text-center`}>
-          © {new Date().getFullYear()} EkLavya. All rights reserved.
+          © {new Date().getFullYear()} Sage Path. All rights reserved.
         </div>
       </div>
     </footer>

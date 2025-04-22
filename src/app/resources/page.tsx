@@ -15,8 +15,8 @@ const mockResources = [
   { id: 6, title: "Cloud Computing Fundamentals", type: "article", category: "Cloud", readTime: "15 min" },
 ];
 
-const ResourceCard = ({ resource, isDarkMode } : { resource: { id: number, title: string, type: string, category: string, size?: string, duration?: string, readTime?: string }, isDarkMode: boolean }) => {
-  const getIcon = (type : string) => {
+const ResourceCard = ({ resource, isDarkMode }: { resource: { id: number, title: string, type: string, category: string, size?: string, duration?: string, readTime?: string }, isDarkMode: boolean }) => {
+  const getIcon = (type: string) => {
     switch (type) {
       case 'pdf': return <FaFileAlt className="text-red-500" />;
       case 'video': return <FaVideo className="text-blue-500" />;
@@ -51,11 +51,11 @@ const Resources = () => {
   const [selectedType, setSelectedType] = useState('All');
   const [filteredResources, setFilteredResources] = useState(mockResources);
 
-const categories = ['All', ...Array.from(new Set(mockResources.map(resource => resource.category)))];
-const types = ['All', ...Array.from(new Set(mockResources.map(resource => resource.type)))];
+  const categories = ['All', ...Array.from(new Set(mockResources.map(resource => resource.category)))];
+  const types = ['All', ...Array.from(new Set(mockResources.map(resource => resource.type)))];
 
   useEffect(() => {
-    const filtered = mockResources.filter(resource => 
+    const filtered = mockResources.filter(resource =>
       resource.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (selectedCategory === 'All' || resource.category === selectedCategory) &&
       (selectedType === 'All' || resource.type === selectedType)
@@ -72,7 +72,7 @@ const types = ['All', ...Array.from(new Set(mockResources.map(resource => resour
   return (
     <>
       <Head>
-        <title>EKLAVYA Resources</title>
+        <title>Sage Path Resources</title>
         <meta name="description" content="Access a wide range of learning materials including PDFs, videos, and articles in our searchable and filterable resource library." />
       </Head>
 
