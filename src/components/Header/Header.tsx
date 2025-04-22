@@ -188,8 +188,8 @@ const Header: React.FC = () => {
                 <Link
                   href={item.href}
                   className={`${isDarkMode
-                      ? "text-gray-300 hover:text-white"
-                      : "text-gray-700 hover:text-gray-900"
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-700 hover:text-gray-900"
                     }`}
                 >
                   {item.text}
@@ -203,8 +203,8 @@ const Header: React.FC = () => {
           <button
             onClick={handleToggleTheme}
             className={`p-2 rounded-full transition-colors duration-300 ${isDarkMode
-                ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
-                : "bg-gray-200 text-gray-600 hover:bg-gray-300"
+              ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
+              : "bg-gray-200 text-gray-600 hover:bg-gray-300"
               }`}
           >
             {isDarkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
@@ -256,8 +256,8 @@ const Header: React.FC = () => {
                         key={index}
                         href={item.href}
                         className={`flex items-center px-4 py-2 text-sm ${isDarkMode
-                            ? "text-gray-300 hover:bg-gray-700"
-                            : "text-gray-700 hover:bg-gray-100"
+                          ? "text-gray-300 hover:bg-gray-700"
+                          : "text-gray-700 hover:bg-gray-100"
                           }`}
                         onClick={toggleUserMenu}
                       >
@@ -270,8 +270,8 @@ const Header: React.FC = () => {
                     <button
                       onClick={providerLogOut}
                       className={`flex items-center w-full px-4 py-2 text-sm text-left ${isDarkMode
-                          ? "text-gray-300 hover:bg-gray-700"
-                          : "text-gray-700 hover:bg-gray-100"
+                        ? "text-gray-300 hover:bg-gray-700"
+                        : "text-gray-700 hover:bg-gray-100"
                         }`}
                     >
                       <FaSignOutAlt className="mr-3" size={16} />
@@ -313,8 +313,8 @@ const Header: React.FC = () => {
                   <Link
                     href={item.href}
                     className={`flex items-center text-2xl ${isDarkMode
-                        ? "text-white hover:text-gray-300"
-                        : "text-gray-800 hover:text-gray-600"
+                      ? "text-white hover:text-gray-300"
+                      : "text-gray-800 hover:text-gray-600"
                       }`}
                     onClick={toggleMenu}
                   >
