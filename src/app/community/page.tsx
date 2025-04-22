@@ -82,15 +82,6 @@ const Community = () => {
 
       <div className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'} min-h-screen transition-colors duration-300`}>
         <div className="container mx-auto px-4 py-8">
-          {/* <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold">Community</h1>
-            <button 
-              onClick={toggleTheme} 
-              className={`p-2 rounded-full ${isDarkMode ? 'bg-yellow-400 text-gray-900' : 'bg-gray-800 text-yellow-400'}`}
-            >
-              {isDarkMode ? <FaSun size={24} /> : <FaMoon size={24} />}
-            </button>
-          </div> */}
 
           <div className={`mb-8 flex items-center ${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-md`}>
             <FaSearch className={`${isDarkMode ? 'text-gray-400' : 'text-gray-500'} ml-4`} />
