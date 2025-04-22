@@ -97,26 +97,26 @@ const Login: React.FC = () => {
                     <form onSubmit={handleLogin} className="space-y-6">
                         <div>
                             <label htmlFor="email" className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Email</label>
-                            <input type="email" id="email" name="email" required 
-                                   className={`mt-1 block w-full px-3 py-2 rounded-md text-sm shadow-sm placeholder-gray-400
+                            <input type="email" id="email" name="email" required
+                                className={`mt-1 block w-full px-3 py-2 rounded-md text-sm shadow-sm placeholder-gray-400
                                           focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500
                                           ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-50 border-gray-300 text-gray-900'}`}
-                                   placeholder="enter email" />
+                                placeholder="enter email" />
                         </div>
                         <div>
                             <label htmlFor="password" className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Password</label>
-                            <input type="password" id="password" name="password" required 
-                                   className={`mt-1 block w-full px-3 py-2 rounded-md text-sm shadow-sm placeholder-gray-400
+                            <input type="password" id="password" name="password" required
+                                className={`mt-1 block w-full px-3 py-2 rounded-md text-sm shadow-sm placeholder-gray-400
                                           focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500
                                           ${isDarkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-gray-50 border-gray-300 text-gray-900'}`}
-                                   placeholder="enter password" />
+                                placeholder="enter password" />
                         </div>
                         <div className="flex items-center justify-between">
                             <Link href="/forgot-password" className={`text-sm ${isDarkMode ? 'text-indigo-400 hover:text-indigo-300' : 'text-indigo-600 hover:text-indigo-500'}`}>Forgot password?</Link>
                             <Link href="/register" className={`text-sm ${isDarkMode ? 'text-indigo-400 hover:text-indigo-300' : 'text-indigo-600 hover:text-indigo-500'}`}>Create an account</Link>
                         </div>
-                        <button type="submit" 
-                                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <button type="submit"
+                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             LOGIN
                         </button>
                     </form>

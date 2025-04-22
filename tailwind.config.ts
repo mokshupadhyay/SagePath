@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+// import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -7,7 +7,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     // Add other directories here if necessary
   ],
-  darkMode: 'class', // Enables dark mode via a 'dark' class
+  darkMode: "class", // Enables dark mode via a 'dark' class
   theme: {
     extend: {
       colors: {
