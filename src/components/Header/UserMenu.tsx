@@ -71,7 +71,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, isDarkMode }) => {
     { icon: FaUser, text: "Profile", href: "/profile" },
     { icon: FaBell, text: "Notification", href: "/notifications" },
     { icon: FaTrophy, text: "Progress", href: "/progress" },
-    { icon: FaHeadset, text: "Support", href: "/support" },  
+    { icon: FaHeadset, text: "Support", href: "/support" },
     { icon: FaCog, text: "Settings", href: "/settings" },
   ];
 
@@ -114,22 +114,19 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, isDarkMode }) => {
       </button>
       {isUserMenuOpen && (
         <div
-          className={`user-menu absolute right-0 mt-4 w-64 ${
-            isDarkMode ? "bg-gray-800" : "bg-white"
-          } rounded-md overflow-hidden shadow-xl z-50`}
+          className={`user-menu absolute right-0 mt-4 w-64 ${isDarkMode ? "bg-gray-800" : "bg-white"
+            } rounded-md overflow-hidden shadow-xl z-50`}
         >
           <div className="px-4 py-3 border-b border-gray-700">
             <p
-              className={`text-sm font-medium ${
-                isDarkMode ? "text-pink-300" : "text-pink-500"
-              }`}
+              className={`text-sm font-medium ${isDarkMode ? "text-pink-300" : "text-pink-500"
+                }`}
             >
               {user.displayName}
             </p>
             <p
-              className={`text-xs ${
-                isDarkMode ? "text-gray-400" : "text-gray-500"
-              }`}
+              className={`text-xs ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                }`}
             >
               {user.email}
             </p>
@@ -139,11 +136,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, isDarkMode }) => {
               <Link
                 key={index}
                 href={item.href}
-                className={`flex items-center px-4 py-2 text-sm ${
-                  isDarkMode
+                className={`flex items-center px-4 py-2 text-sm ${isDarkMode
                     ? "text-gray-300 hover:bg-gray-700"
                     : "text-gray-700 hover:bg-gray-100"
-                }`}
+                  }`}
                 onClick={toggleUserMenu}
               >
                 <item.icon className="mr-3" size={16} />
@@ -154,11 +150,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, isDarkMode }) => {
           <div className="border-t border-gray-700 py-2">
             <button
               onClick={providerLogOut}
-              className={`flex items-center w-full px-4 py-2 text-sm text-left ${
-                isDarkMode
+              className={`flex items-center w-full px-4 py-2 text-sm text-left ${isDarkMode
                   ? "text-gray-300 hover:bg-gray-700"
                   : "text-gray-700 hover:bg-gray-100"
-              }`}
+                }`}
             >
               <FaSignOutAlt className="mr-3" size={16} />
               Logout

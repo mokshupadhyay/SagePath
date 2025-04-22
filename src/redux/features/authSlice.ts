@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { User } from 'firebase/auth';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { User } from "firebase/auth";
 
 interface AuthState {
   user: User | null;
@@ -8,8 +8,8 @@ interface AuthState {
 }
 
 const loadUserFromLocalStorage = (): User | null => {
-  if (typeof window !== 'undefined') {
-    const savedUser = localStorage.getItem('user');
+  if (typeof window !== "undefined") {
+    const savedUser = localStorage.getItem("user");
     return savedUser ? JSON.parse(savedUser) : null;
   }
   return null;
@@ -22,7 +22,7 @@ const initialState: AuthState = {
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<User | null>) => {
@@ -30,9 +30,9 @@ const authSlice = createSlice({
       state.loading = false;
       state.initialized = true;
       if (action.payload) {
-        localStorage.setItem('user', JSON.stringify(action.payload));
+        localStorage.setItem("user", JSON.stringify(action.payload));
       } else {
-        localStorage.removeItem('user');
+        localStorage.removeItem("user");
       }
     },
     setLoading: (state, action: PayloadAction<boolean>) => {

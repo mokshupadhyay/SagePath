@@ -38,8 +38,8 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(({ isOpen, toggleMenu, 
               <Link
                 href={item.href}
                 className={`flex items-center text-xl ${isDarkMode
-                    ? "text-white hover:text-gray-300"
-                    : "text-gray-800 hover:text-gray-600"
+                  ? "text-white hover:text-gray-300"
+                  : "text-gray-800 hover:text-gray-600"
                   }`}
                 onClick={toggleMenu}
               >
