@@ -23,11 +23,10 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({ isDarkMode }) => {
         <li key={index}>
           <Link
             href={item.href}
-            className={`flex items-center ${
-              isDarkMode
+            className={`flex items-center ${isDarkMode
                 ? "text-gray-300 hover:text-white"
                 : "text-gray-700 hover:text-gray-900"
-            }`}
+              }`}
           >
             <item.icon className="mr-2" size={16} />
             {item.text}
